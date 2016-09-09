@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Oi <%=name %></title>
+    </head>
+    <body>
+        <h1>Oi <%=name %></h1>
+        <p>
+            Seja bem vindo!!
+        </p>
+    </body>
+</html>
