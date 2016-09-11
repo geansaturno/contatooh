@@ -7,6 +7,8 @@ module.exports = function() {
         email: 'cont1@empresa.com.br'},
         {_id: 2, nome: 'Contato Exemplo 2',
         email: 'cont2@empresa.com.br'},
+        {_id: 4, nome: 'Contato Exemplo 2.5',
+        email: 'cont2.5@empresa.com.br'},
         {_id: 3, nome: 'Contato Exemplo 3',
         email: 'cont3@empresa.com.br'}
     ];
@@ -23,6 +25,16 @@ module.exports = function() {
         })[0];
 
         contato ? res.json(contato) : res.status(404).send('Contato não encontrado');
+    }
+
+    controller.deletaContato = function(req, res){
+        var contatoId = req.params.id;
+
+        contatos = contatos.filter(function(contato){
+            return contato._id != contatoId;
+        });
+
+        res.status(204).end();
     }
 
     return controller;

@@ -5,6 +5,10 @@ function($scope, $resource){
 
     $scope.contatos = [];
 
+    $scope.msg = {
+        texto : ''
+    };
+
     console.log($scope.contatos);
     var Contato = $resource('/contatos/:id');
 
@@ -16,9 +20,18 @@ function($scope, $resource){
             function(erro){
                 console.log("Erro ao pegar contatos");
                 console.log(erro);
+                $scope.msg.text = 'Erro ao pegar contatos';
             }
         )
     }
-    
+
     buscaContatos();
+
+    $scope.remove = function(contatoId){
+        Contato.delete({id: contatoId}, buscaContatos, function(erro){
+            console.log('Não foi possivel excluir o elemento');
+            console.log(erro);
+            $scope.msg.text = 'Não foi possível excluir o elemento';
+        })
+    }
 });
