@@ -3,9 +3,9 @@
         Bem-vindo ao Contatooh
     </h1>
 </div>
-<button class="btn btn-primary" ng-click="incrementa()">
-    Novo
-</button>
+
+<a ng-href="#/contato" class="btn btn-primary btn-lg">Novo Contato</a>
+
 <input type="search" ng-model='filtro' placeholder="Parte do nome" class="">
 <p ng-show='contatos.length'>Contatos cadastrados: {{contatos.length}}</p>
 <div class="alert alert-warning" ng-hide='contatos.length'>
@@ -29,7 +29,7 @@
         </tr>
         <tr ng-repeat='contato in contatos | filter: filtro'>
             <td>
-                <a>{{contato.nome}}</a>
+                <a ng-href='#/contato/{{contato._id}}'>{{contato.nome}}</a>
             </td>
             <td>{{contato.email}}</td>
             <td class="text-center">

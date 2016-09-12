@@ -1,5 +1,7 @@
 module.exports = function() {
 
+    var ID_CONTATO_INIC = 4;
+
     var controller = {};
 
     var contatos = [
@@ -35,6 +37,41 @@ module.exports = function() {
         });
 
         res.status(204).end();
+    }
+
+    controller.salvaContato = function(req, res){
+
+        var contato = req.body;
+
+        contato._id ? atualiza(contato) : adiciona(contato);
+
+    }
+
+    function adiciona(novoContato) {
+        console.log('criando contato');
+        novoContato.id = ++ID_CONTATO_INIC;
+
+        contatos.push(novoContato);
+
+        return novoContato;
+    }
+
+    function atualiza(contatoAlterado) {
+        console.log('Contato a ser alterado', contatoAlterado);
+        console.log('Atualizando contato');
+        contatos = contatos.map(function(contato){
+            console.log(contato);
+            if(contato._id == contatoAlterado._id){
+                console.log('contato localizado');
+                contato = contatoAlterado;
+            }
+
+            return contato;
+        });
+
+        console.log('Contatos após atualização', contatos);
+
+        return contatoAlterado;
     }
 
     return controller;

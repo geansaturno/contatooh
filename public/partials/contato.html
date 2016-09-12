@@ -1,8 +1,8 @@
 <h1 class="text-center">Contato</h1>
-<p ng-show="mensagem.texto">
-    {{mensagem.texto}}
+<p ng-show="msg.texto">
+    {{msg.texto}}
 </p>
-<form>
+<form ng-submit='salvar()'>
     <div class="form-group">
         <label for="nome">Nome completo</label>
         <input type="text" class="form-control" id="nome"
